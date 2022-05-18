@@ -75,6 +75,25 @@ let makeSentence = (words) => {
 //
 // TODO: write code below
 
+let fileExtension = (file) => {
+  let extension = '';
+  for (let i = 0; i < file.length; i++) {
+    if (i === file.lastIndexOf('.')) {
+      extension = file.slice(i + 1);
+      break;
+    }
+  }
+  return extension;
+};
+
+// THIS DOES NOT WORK BECAUSE YOU CANNOT 'BREAK LOOP' WITH A TERNARY OPERATOR
+// let fileExtension = (file) => {
+//   let extension = '';
+//   for (let i = 0; i < file.length; i++) {
+//     return file[i] === '.' ? (extension = file.slice(i + 1)) : extension;
+//   }
+// };
+
 // Range
 //
 // Create a function that takes an array of numbers and returns the difference
@@ -85,6 +104,12 @@ let makeSentence = (words) => {
 // with a reference to your function.
 //
 // TODO: write code below
+
+let range = (array) => {
+  let maxNum = Math.max(...array);
+  let minNum = Math.min(...array);
+  return maxNum - minNum;
+};
 
 // CheckTransactions
 //
@@ -103,6 +128,13 @@ let makeSentence = (words) => {
 //
 // TODO: write code below
 
+let transactions = (payments, balance, overdraft) => {
+  for (let i = 0; i < payments.length; i++) {
+    balance += payments[i];
+  }
+  return overdraft === balance ? true : -overdraft < balance;
+};
+// console.log(transactions([-10, -20], 20, 15));
 // FilmsInGenre
 //
 // Create a function that takes an array of film objects, a film genre, and returns
@@ -115,6 +147,41 @@ let makeSentence = (words) => {
 // with a reference to your function.
 //
 // TODO: write code below
+
+// const films = [
+//   {
+//     name: 'The Power Of The Dog',
+//     genres: ['Drama', 'Western'],
+//   },
+//   {
+//     name: 'Dune',
+//     genres: ['Sci-Fi'],
+//   },
+//   {
+//     name: 'The Matrix Resurrections',
+//     genres: ['Sci-Fi'],
+//   },
+//   {
+//     name: 'The Last Duel',
+//     genres: ['Drama', 'History'],
+//   },
+// ];
+
+let filmGenre = (arr, genre) => {
+  let indexOfGenre;
+  let movieName = [];
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < 2; j++) {
+      indexOfGenre = arr[i].genres[j] === genre;
+      if (indexOfGenre === true) {
+        movieName.push(arr[i].name);
+      }
+      // console.log(indexOfGenre);
+      // console.log('i', i, 'j', j);
+    }
+  }
+  return movieName;
+};
 
 // TODO: change undefined to be the name of the functions you defined
 module.exports = {
@@ -131,14 +198,14 @@ module.exports = {
   d: makeSentence,
 
   //FileExtension
-  e: undefined,
+  e: fileExtension,
 
   //Range
-  f: undefined,
+  f: range,
 
   //CheckTransactions
-  g: undefined,
+  g: transactions,
 
   //FilmsInGenre
-  h: undefined,
+  h: filmGenre,
 };
