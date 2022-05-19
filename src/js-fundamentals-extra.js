@@ -173,13 +173,19 @@ let filmGenre = (arr, genre) => {
   for (let i = 0; i < arr.length; i++) {
     for (let j = 0; j < arr[i].genres.length; j++) {
       indexOfGenre = arr[i].genres[j] === genre;
-      if (indexOfGenre === true) {
-        movieName.push(arr[i].name);
-      }
+      if (indexOfGenre === true) movieName.push(arr[i].name);
     }
   }
   return movieName;
 };
+
+// const filmGenre = (films, genre) => {
+//   let result = [];
+//   films.forEach((filmObj) => {
+//     if (filmObj.genres.includes(genre)) result.push(filmObj.name);
+//   });
+//   return result;
+// };
 
 // TODO: change undefined to be the name of the functions you defined
 module.exports = {
