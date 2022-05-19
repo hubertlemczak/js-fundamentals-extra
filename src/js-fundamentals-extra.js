@@ -169,15 +169,13 @@ let transactions = (payments, balance, overdraft) => {
 
 let filmGenre = (arr, genre) => {
   let indexOfGenre;
-  let movieName = [];
+  const movieName = [];
   for (let i = 0; i < arr.length; i++) {
-    for (let j = 0; j < 2; j++) {
+    for (let j = 0; j < arr[i].genres.length; j++) {
       indexOfGenre = arr[i].genres[j] === genre;
       if (indexOfGenre === true) {
         movieName.push(arr[i].name);
       }
-      // console.log(indexOfGenre);
-      // console.log('i', i, 'j', j);
     }
   }
   return movieName;
